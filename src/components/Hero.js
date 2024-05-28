@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaCamera } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 const Hero = () => {
     const [frequentlySearched, setFrequentlySearched] = useState([
@@ -28,16 +29,16 @@ const Hero = () => {
                 ></input>
                 <FaCamera className="text-gray-500" />
 
-                <button className="px-8 py-2 text-white bg-orange-500 rounded-full">
-                    Search
+                <button className="flex gap-2 items-center px-8 py-2 text-white bg-orange-500 rounded-full">
+                    <FaSearch /> Search
                 </button>
             </div>
             <div className="flex gap-8 items-center">
-                <h3>Frequently searched:</h3>
+                <h3 className="whitespace-nowrap">Frequently searched:</h3>
                 <div className="flex gap-4">
                     {frequentlySearched.map((search) => {
                         return (
-                            <p className="py-2 px-4 border border-white rounded-full text-sm">
+                            <p className="py-2 px-4 border border-white rounded-full text-sm whitespace-nowrap">
                                 {search}
                             </p>
                         );
