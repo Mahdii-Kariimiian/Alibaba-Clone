@@ -17,22 +17,22 @@ const Stream = () => {
                         <FaSearch className="text-6xl text-gray-500 p-3 border border-gray-500 rounded-full" />
                         <p>Search for matches</p>
                     </div>
-                    <div className="w-[2px] h-10 bg-gray-500 ml-6 my-2"></div>
+                    <div className="w-[2px] h-10 bg-gray-500 ml-7 my-2"></div>
                     <div className="flex gap-10 cursor-pointer items-center text-3xl">
                         <FaCheck className="text-6xl text-gray-500 p-3 border border-gray-500 rounded-full" />
                         <p>Identify the right one</p>
                     </div>
-                    <div className="w-[2px] h-10 bg-gray-500 ml-6 my-2"></div>
+                    <div className="w-[2px] h-10 bg-gray-500 ml-7 my-2"></div>
                     <div className="flex gap-10 cursor-pointer items-center text-3xl">
                         <SiAfterpay className="text-6xl text-gray-500 p-3 border border-gray-500 rounded-full" />
                         <p>Pay with confidence</p>
                     </div>
-                    <div className="w-[2px] h-10 bg-gray-500 ml-6 my-2"></div>
+                    <div className="w-[2px] h-10 bg-gray-500 ml-7 my-2"></div>
                     <div className="flex gap-10 cursor-pointer items-center text-3xl">
                         <FaEarthAsia className="text-6xl text-gray-500 p-3 border border-gray-500 rounded-full" />
                         <p>Fulfill with transparency</p>
                     </div>
-                    <div className="w-[2px] h-10 bg-gray-500 ml-6 my-2"></div>
+                    <div className="w-[2px] h-10 bg-gray-500 ml-7 my-2"></div>
                     <div className="flex gap-10 cursor-pointer items-center text-3xl">
                         <CgProfile className="text-6xl text-gray-500 p-3 border border-gray-500 rounded-full" />
                         <p>Manage with ease</p>
