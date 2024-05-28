@@ -2,8 +2,6 @@ import { useState } from "react";
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaCamera } from "react-icons/fa";
 
-
-
 const Hero = () => {
     const [frequentlySearched, setFrequentlySearched] = useState([
         "electric scooter",
@@ -12,7 +10,9 @@ const Hero = () => {
     ]);
 
     return (
-        <div className={`bg-sky-800 text-white h-[89vh] pt-20 px-10 space-y-8 flex flex-col justify-center `} >
+        <div
+            className={`bg-sky-800 text-white h-[89vh] pt-20 px-10 space-y-8 flex flex-col justify-center `}
+        >
             <div className="flex gap-2 items-center text-xl">
                 <FaCirclePlay />
                 <p>Learn about Alibaba.com</p>
