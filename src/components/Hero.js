@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaCamera } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import Background from "../assets/hero-background.jpg";
 
 const Hero = () => {
     // Value of Input
@@ -42,7 +43,24 @@ const Hero = () => {
         "electric scooter",
         "iphone 15 pro max",
         "alibaba in italia",
+        "vivo v20",
+        "realme 8",
+        "google pixel",
+        "nokia 5.3",
     ]);
+
+    // Placeholder Terms
+    const [placeholderTerm, setPlaceholderTerm] = useState(
+        frequentlySearched[0]
+    );
+
+    setInterval(() => {
+        setPlaceholderTerm(
+            frequentlySearched[
+                Math.floor(Math.random() * frequentlySearched.length)
+            ]
+        );
+    }, 3000);
 
     //click input function
     const handleClickInput = () => {
@@ -56,7 +74,8 @@ const Hero = () => {
 
     return (
         <div
-            className={`bg-sky-800 text-white h-[89vh] pt-20 px-10 space-y-8 flex flex-col justify-center `}
+            className={`bg-sky-800 text-white h-[89vh] bg-center bg-cover pt-20 px-10 space-y-8 flex flex-col justify-center`}
+            style={{ backgroundImage: `url(${Background})` }}
         >
             <div className="flex gap-2 items-center text-xl">
                 <FaCirclePlay />
@@ -67,14 +86,14 @@ const Hero = () => {
                 The leading B2B ecommerce platform for global trade
             </h1>
 
-            <div className="relative bg-white flex items-center gap-3 p-1 rounded-full max-w-[800px]">
+            <div className="min-w-[400px] relative bg-white flex items-center gap-3 p-1 rounded-full max-w-[800px]">
                 <input
                     onClick={() => handleClickInput()}
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     type="text"
-                    className="flex-1 ml-3 p-2 text-black "
-                    placeholder="Search"
+                    className="flex-1 ml-3 p-2 text-black  "
+                    placeholder={placeholderTerm}
                 ></input>
 
                 <FaCamera className="text-gray-500" />
@@ -91,12 +110,12 @@ const Hero = () => {
                 {isClicked && !value && (
                     <div className="h-[384px] absolute top-12 p-10 right-0 left-0 text-black bg-white rounded-[25px] max-w-[800px]">
                         <h2 className="text-2xl mb-5">Recommended for you</h2>
-                        {frequentlySearched.map((search) => {
+                        {frequentlySearched.map((search ,index ) => {
                             return (
-                                <p className="py-2 px-4 flex gap-2 items-center border border-white rounded-full text-sm whitespace-nowrap">
+                                <div key={index} className="py-2 px-4 flex gap-2 items-center border border-white rounded-full text-sm whitespace-nowrap">
                                     <FaSearch />
                                     <p>{search}</p>
-                                </p>
+                                </div>
                             );
                         })}
                     </div>
@@ -112,9 +131,9 @@ const Hero = () => {
                                     .includes(value.toLowerCase());
                             })
                             .slice(0, 10)
-                            .map((searchTerm) => {
+                            .map(( searchTerm ,index ) => {
                                 return (
-                                    <p className="py-2 px-4 text-sm whitespace-nowrap">
+                                    <p key={index} className="py-2 px-4 text-sm whitespace-nowrap">
                                         {searchTerm}
                                     </p>
                                 );
@@ -127,13 +146,14 @@ const Hero = () => {
                 <h3 className="whitespace-nowrap">Frequently searched:</h3>
 
                 <div className="flex gap-4">
-                    {frequentlySearched.map((search) => {
-                        return (
-                            <p className="py-2 px-4 border border-white rounded-full text-sm whitespace-nowrap">
-                                {search}
-                            </p>
-                        );
-                    })}
+                    {frequentlySearched.slice(0, 3).map((search) => (
+                        <p
+                            key={search}
+                            className="py-2 px-4 border border-white rounded-full text-sm whitespace-nowrap"
+                        >
+                            {search}
+                        </p>
+                    ))}
                 </div>
             </div>
         </div>

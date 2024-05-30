@@ -3,20 +3,22 @@ import { GrLanguage } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import ItalyFlag from "../assets/Flag_of_Italy.png";
 import LogoIcon from "../assets/Logo.png";
+import OrangeLogo from "../assets/alibabaـorangeـlogo.png";
 
 const Header = () => {
     const [bgColor, setBgColor] = useState(
-        "bg-gradient-to-b from-black to-[#ffffff00]"
+        "bg-gradient-to-b from-black to-[#ffffff00] text-white"
     );
 
+    console.log(window.scrollY)
     const handleScroll = () => {
         const scrollY = window.scrollY;
         if (scrollY > 1) {
             setBgColor("bg-white text-black");
         } else {
-            setBgColor("bg-gradient-to-b from-black to-[#ffffff00]");
+            setBgColor("bg-gradient-to-b from-black to-[#ffffff00] text-white");
         }
-        console.log(scrollY);
+        console.log(scrollY)
     };
 
     useEffect(() => {
@@ -28,10 +30,10 @@ const Header = () => {
 
     return (
         <header
-            className={`z-10 sticky top-0 px-10 py-4 flex text-white items-center gap-6 ${bgColor} `}
+            className={`z-10 sticky top-0 px-10 py-4 flex items-center gap-6 ${bgColor}  `}
         >
             <div className="w-[210px]">
-                <img src={LogoIcon} className="" alt="Alibaba logo" />
+                <img src={window.scrollY>1 ? `${OrangeLogo}` : `${LogoIcon}`} className="" alt="Alibaba logo" />
             </div>
             <div className="ml-auto whitespace-nowrap">
                 <p className="text-xs">Deliver to:</p>

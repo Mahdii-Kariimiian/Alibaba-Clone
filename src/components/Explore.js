@@ -1,9 +1,7 @@
-import React from "react";
-
 const Explore = () => {
     return (
-        <div className="p-10 text-gray-800 flex items-center gap-[100px] my-[150px]">
-            <h2 className="text-5xl leading-[60px] w-[60%]">
+        <div className="p-10 text-[#1F2937] flex items-center gap-[100px] my-[150px]">
+            <h2 className="text-[48px] font-bold leading-[60px] w-[60%]">
                 Explore millions of offerings tailored to your business needs
             </h2>
             <div className="grid grid-cols-2 gap-8">

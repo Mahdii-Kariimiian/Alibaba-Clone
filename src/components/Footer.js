@@ -11,7 +11,7 @@ import AppStore from "../assets/app store download.png";
 const Footer = () => {
     return (
         <div>
-            <div className="border-t-2 border-gray-500 p-10 grid sm:grid-cols-3 lg:grid-cols-5">
+            <div className="border-t-2 border-gray-500 p-10 grid sm:grid-cols-3 lg:grid-cols-5 text-[#222222]">
                 <div>
                     <h3 className="text-lg font-bold mb-5">Get support</h3>
                     <ul className="leading-[40px] mb-5 text-sm">
