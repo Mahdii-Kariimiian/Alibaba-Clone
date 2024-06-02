@@ -10,15 +10,15 @@ const Header = () => {
         "bg-gradient-to-b from-black to-[#ffffff00] text-white"
     );
 
-    console.log(window.scrollY)
+    console.log(window.scrollY);
     const handleScroll = () => {
         const scrollY = window.scrollY;
-        if (scrollY > 1) {
-            setBgColor("bg-white text-black");
-        } else {
-            setBgColor("bg-gradient-to-b from-black to-[#ffffff00] text-white");
-        }
-        console.log(scrollY)
+        scrollY > 1
+            ? setBgColor("bg-white text-black")
+            : setBgColor(
+                  "bg-gradient-to-b from-black to-[#ffffff00] text-white"
+              );
+        console.log(scrollY);
     };
 
     useEffect(() => {
@@ -30,15 +30,20 @@ const Header = () => {
 
     return (
         <header
-            className={`z-10 sticky top-0 px-10 py-4 flex items-center gap-6 ${bgColor}  `}
+            className={`z-10 fixed top-0 right-0 left-0 px-10 py-4 flex items-center gap-6 ${bgColor}  `}
         >
-            <div className="w-[210px]">
-                <img src={window.scrollY>1 ? `${OrangeLogo}` : `${LogoIcon}`} className="" alt="Alibaba logo" />
-            </div>
+            
+                <img
+                    src={window.scrollY > 1 ? `${OrangeLogo}` : `${LogoIcon}`}
+                    className="w-[210px]"
+                    alt="Alibaba logo"
+                />
+            
             <div className="ml-auto whitespace-nowrap">
-                <p className="text-xs">Deliver to:</p>
-                <div className="w-[20px] flex items-center gap-1">
-                    <img src={ItalyFlag} alt="Flag of Italy "></img> <p> IT </p>
+                <p className="text-xs">Deliver to :</p>
+                <div className="w-[20px] flex items-center gap-2 ">
+                    <img src={ItalyFlag} alt="Flag of Italy "></img>
+                    <p> IT </p>
                 </div>
             </div>
 

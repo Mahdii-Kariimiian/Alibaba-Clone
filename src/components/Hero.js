@@ -54,13 +54,19 @@ const Hero = () => {
         frequentlySearched[0]
     );
 
-    setInterval(() => {
-        setPlaceholderTerm(
-            frequentlySearched[
-                Math.floor(Math.random() * frequentlySearched.length)
-            ]
-        );
-    }, 3000);
+    useEffect(() => {
+        const placeHolderInterval = setInterval(() => {
+            setPlaceholderTerm(
+                frequentlySearched[
+                    Math.floor(Math.random() * frequentlySearched.length)
+                ]
+            );
+        }, 3000);
+
+        return () => {
+            clearInterval(placeHolderInterval);
+        };
+    }, []);
 
     //click input function
     const handleClickInput = () => {
@@ -92,9 +98,10 @@ const Hero = () => {
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     type="text"
-                    className="flex-1 ml-3 p-2 text-black  "
-                    placeholder={placeholderTerm}
+                    className="focus:outline-none flex-1 ml-3 p-2 text-black  "
                 ></input>
+
+                
 
                 <FaCamera className="text-gray-500" />
 
@@ -106,13 +113,21 @@ const Hero = () => {
                 >
                     <FaSearch /> Search
                 </button>
+
+                <div className= "text-gray-500 absolute left-5 ">
+                    {placeholderTerm}
+                </div>
+
                 {/* Recommended Section */}
                 {isClicked && !value && (
                     <div className="h-[384px] absolute top-12 p-10 right-0 left-0 text-black bg-white rounded-[25px] max-w-[800px]">
                         <h2 className="text-2xl mb-5">Recommended for you</h2>
-                        {frequentlySearched.map((search ,index ) => {
+                        {frequentlySearched.map((search, index) => {
                             return (
-                                <div key={index} className="py-2 px-4 flex gap-2 items-center border border-white rounded-full text-sm whitespace-nowrap">
+                                <div
+                                    key={index}
+                                    className="py-2 px-4 flex gap-2 items-center border border-white rounded-full text-sm whitespace-nowrap"
+                                >
                                     <FaSearch />
                                     <p>{search}</p>
                                 </div>
@@ -131,9 +146,12 @@ const Hero = () => {
                                     .includes(value.toLowerCase());
                             })
                             .slice(0, 10)
-                            .map(( searchTerm ,index ) => {
+                            .map((searchTerm, index) => {
                                 return (
-                                    <p key={index} className="py-2 px-4 text-sm whitespace-nowrap">
+                                    <p
+                                        key={index}
+                                        className="py-2 px-4 text-sm whitespace-nowrap"
+                                    >
                                         {searchTerm}
                                     </p>
                                 );

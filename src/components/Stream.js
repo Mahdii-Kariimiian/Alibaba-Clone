@@ -69,9 +69,9 @@ const Stream = () => {
                                 </div>
                                 {hoveredIndex === 0 && (
                                     <div className="text-md text-gray-500 cursor-pointer mt-2 max-w-[500px]">
-                                        Search and filter from millions of product
-                                        and supplier offerings to find the matching
-                                        ones for your business.
+                                        Search and filter from millions of
+                                        product and supplier offerings to find
+                                        the matching ones for your business.
                                     </div>
                                 )}
                             </div>
@@ -112,9 +112,9 @@ const Stream = () => {
                                 {hoveredIndex === 1 && (
                                     <div className="text-md text-gray-500 cursor-pointer mt-2 max-w-[500px]">
                                         Evaluate product quality and supplier
-                                        capabilities easily and efficiently through
-                                        verified inspections and digital sourcing
-                                        tools.
+                                        capabilities easily and efficiently
+                                        through verified inspections and digital
+                                        sourcing tools.
                                     </div>
                                 )}
                             </div>
@@ -154,9 +154,9 @@ const Stream = () => {
                                 </div>
                                 {hoveredIndex === 2 && (
                                     <div className="text-md text-gray-500 cursor-pointer mt-2 max-w-[500px]">
-                                        Pay for your order in over 20 currencies via
-                                        20+ secure payment methods, including
-                                        flexible payment terms.
+                                        Pay for your order in over 20 currencies
+                                        via 20+ secure payment methods,
+                                        including flexible payment terms.
                                     </div>
                                 )}
                             </div>
@@ -241,9 +241,10 @@ const Stream = () => {
                                 </div>
                                 {hoveredIndex === 4 && (
                                     <div className="text-md text-gray-500 cursor-pointer mt-2 max-w-[500px]">
-                                        Check order status, manage suppliers, track
-                                        payments and shipments, and contact
-                                        after-sales support all via My Alibaba.
+                                        Check order status, manage suppliers,
+                                        track payments and shipments, and
+                                        contact after-sales support all via My
+                                        Alibaba.
                                     </div>
                                 )}
                             </div>
