@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { cloneElement, useState } from "react";
 // Icons
 import { FaSearch } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
@@ -22,7 +22,7 @@ const Stream = () => {
             icon: <FaSearch className="w-10 h-10" />,
             description:
                 "Search and filter from millions of product and supplier offerings to find the matching ones for your business.",
-            src:  Search,
+            src: Search,
         },
 
         {
@@ -67,6 +67,7 @@ const Stream = () => {
                     {streamDetails.map((detail) => {
                         return (
                             <div
+                                key={detail.title}
                                 onMouseOver={() => {
                                     setBanner(detail.src);
                                 }}

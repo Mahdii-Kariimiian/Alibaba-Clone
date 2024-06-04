@@ -27,7 +27,10 @@ const Explore = () => {
             <div className="grid grid-cols-2 gap-8">
                 {exploreDetails.map((detail) => {
                     return (
-                        <div className="border-l-4 border-gray-500 px-4">
+                        <div
+                            key={detail.title}
+                            className="border-l-4 border-gray-500 px-4"
+                        >
                             <p className="text-5xl text-orange-500">
                                 {detail.number}
                             </p>

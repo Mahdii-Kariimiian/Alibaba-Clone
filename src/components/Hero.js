@@ -1,81 +1,88 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaCamera } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import Background from "../assets/hero-background.jpg";
 
 const Hero = () => {
+    ////////STATES and VARIABLES//////////
+    //URL
+    const baseURL = "https://dummyjson.com/products";
+    // Products from API
+    const [products, setProducts] = useState([]);
     // Value of Input
     const [value, setValue] = useState("");
-
-    //isClicked function
+    // IsClicked state
     const [isClicked, setIsClicked] = useState(false);
+    // Frequently Searched
+    const [frequentlySearched, setFrequentlySearched] = useState([]);
+    // Placeholder Term
+    const [placeholderTerm, setPlaceholderTerm] = useState("");
 
-    // Hard coded Suggestion
-    const searchTerms = [
-        "iphone 15 pro max",
-        "alibaba in italia",
-        "electric scooter",
-        "samsung a51",
-        "apple watch",
-        "samsung galaxy",
-        "sony xperia",
-        "xiaomi redmi",
-        "oppo a9",
-        "vivo v20",
-        "realme 8",
-        "google pixel",
-        "nokia 5.3",
-        "motorola one fusion",
-        "oppo a53",
-        "samsung galaxy a12",
-        "xiaomi mi 11",
-        "xiaomi mi 10",
-        "xiaomi mi 9",
-        "xiaomi mi 9t",
-        "xiaomi mi 8",
-        "xiaomi mi 7",
-        "xiaomi mi 6",
-    ];
-
-    //Frequently Searched
-    const [frequentlySearched, setFrequentlySearched] = useState([
-        "electric scooter",
-        "iphone 15 pro max",
-        "alibaba in italia",
-        "vivo v20",
-        "realme 8",
-        "google pixel",
-        "nokia 5.3",
-    ]);
-
-    // Placeholder Terms
-    const [placeholderTerm, setPlaceholderTerm] = useState(
-        frequentlySearched[0]
-    );
-
+    ////////USE EFFECTS//////////
     useEffect(() => {
-        const placeHolderInterval = setInterval(() => {
-            setPlaceholderTerm(
-                frequentlySearched[
-                    Math.floor(Math.random() * frequentlySearched.length)
-                ]
-            );
-        }, 3000);
-
-        return () => {
-            clearInterval(placeHolderInterval);
-        };
+        axios
+            .get(baseURL)
+            .then((res) => {
+                const fetchedProducts = res.data.products;
+                setProducts(fetchedProducts);
+                const newFrequentlySearched = fetchedProducts
+                    .slice(0, 7)
+                    .map((product) => product.title);
+                setFrequentlySearched(newFrequentlySearched);
+                setPlaceholderTerm(newFrequentlySearched[0]);
+            })
+            .catch((err) => {
+                console.log("error: ", err.message);
+            });
     }, []);
 
-    //click input function
-    const handleClickInput = () => {
-        setIsClicked(!isClicked);
-    };
+    //FETCH DATA WITH ASYNC AWAIT
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const res = await axios(baseURL);
+    //             const fetchedProducts = res.data.products;
+    //             setProducts(fetchedProducts);
+    //             const newFrequentlySearched = fetchedProducts
+    //                 .slice(0, 7)
+    //                 .map((product) => product.title);
+    //             setFrequentlySearched(newFrequentlySearched);
+    //             setPlaceholderTerm(newFrequentlySearched[0]);
+    //         } catch (err) {
+    //             console.log("error: ", err.message);
+    //         }
+    //     };
 
+    //     fetchData()
+    // }, []);
+
+    useEffect(() => {
+        if (frequentlySearched.length > 0) {
+            const placeHolderInterval = setInterval(() => {
+                setPlaceholderTerm(
+                    frequentlySearched[
+                        Math.floor(Math.random() * frequentlySearched.length)
+                    ]
+                );
+            }, 3000);
+
+            return () => {
+                clearInterval(placeHolderInterval);
+            };
+        }
+    }, [frequentlySearched]);
+
+    ////////FUNCTIONS//////////
     // Search button function
     const onSearch = (searchTerm) => {
         console.log("searchTerm", searchTerm);
+    };
+
+    // Click input function
+    const handleClickInput = () => {
+        setIsClicked(!isClicked);
     };
 
     return (
@@ -94,68 +101,57 @@ const Hero = () => {
 
             <div className="min-w-[400px] relative bg-white flex items-center gap-3 p-1 rounded-full max-w-[800px]">
                 <input
-                    onClick={() => handleClickInput()}
+                    onClick={handleClickInput}
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     type="text"
-                    className="focus:outline-none flex-1 ml-3 p-2 text-black  "
-                ></input>
-
-                
+                    className="focus:outline-none flex-1 ml-3 p-2 text-black"
+                    placeholder={placeholderTerm}
+                />
 
                 <FaCamera className="text-gray-500" />
 
                 <button
-                    onClick={() => {
-                        onSearch(value);
-                    }}
+                    onClick={() => onSearch(value)}
                     className="flex gap-2 items-center px-8 py-2 text-white bg-orange-500 rounded-full"
                 >
                     <FaSearch /> Search
                 </button>
 
-                <div className= "text-gray-500 absolute left-5 ">
-                    {placeholderTerm}
-                </div>
-
                 {/* Recommended Section */}
                 {isClicked && !value && (
                     <div className="h-[384px] absolute top-12 p-10 right-0 left-0 text-black bg-white rounded-[25px] max-w-[800px]">
                         <h2 className="text-2xl mb-5">Recommended for you</h2>
-                        {frequentlySearched.map((search, index) => {
-                            return (
-                                <div
-                                    key={index}
-                                    className="py-2 px-4 flex gap-2 items-center border border-white rounded-full text-sm whitespace-nowrap"
-                                >
-                                    <FaSearch />
-                                    <p>{search}</p>
-                                </div>
-                            );
-                        })}
+                        {frequentlySearched.map((search, index) => (
+                            <div
+                                key={index}
+                                className="py-2 px-4 flex gap-2 items-center border border-white rounded-full text-sm whitespace-nowrap"
+                            >
+                                <FaSearch />
+                                <p>{search}</p>
+                            </div>
+                        ))}
                     </div>
                 )}
 
                 {/* Filtered Terms */}
                 {value && (
                     <div className="absolute top-12 p-3 right-0 left-0 text-black bg-white rounded-[25px] max-w-[800px]">
-                        {searchTerms
-                            .filter((searchTerm) => {
-                                return searchTerm
+                        {products
+                            .filter((product) =>
+                                product.title
                                     .toLowerCase()
-                                    .includes(value.toLowerCase());
-                            })
+                                    .includes(value.toLowerCase())
+                            )
                             .slice(0, 10)
-                            .map((searchTerm, index) => {
-                                return (
-                                    <p
-                                        key={index}
-                                        className="py-2 px-4 text-sm whitespace-nowrap"
-                                    >
-                                        {searchTerm}
-                                    </p>
-                                );
-                            })}
+                            .map((product, index) => (
+                                <p
+                                    key={index}
+                                    className="py-2 px-4 text-sm whitespace-nowrap"
+                                >
+                                    {product.title}
+                                </p>
+                            ))}
                     </div>
                 )}
             </div>
@@ -164,9 +160,9 @@ const Hero = () => {
                 <h3 className="whitespace-nowrap">Frequently searched:</h3>
 
                 <div className="flex gap-4">
-                    {frequentlySearched.slice(0, 3).map((search) => (
+                    {frequentlySearched.slice(0, 3).map((search, index) => (
                         <p
-                            key={search}
+                            key={index}
                             className="py-2 px-4 border border-white rounded-full text-sm whitespace-nowrap"
                         >
                             {search}
