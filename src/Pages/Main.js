@@ -1,4 +1,3 @@
-import React from "react";
 import Explore from "../components/Explore";
 import Features from "../components/Features";
 import Footer from "../components/Footer";
@@ -7,18 +6,26 @@ import Stream from "../components/Stream";
 import Hero from "../components/Hero";
 import Trade from "../components/Trade";
 
+import LayoutMobile from "../components/mobile/LayoutMobile";
+
 const Main = () => {
     return (
         <div className="relative">
-            <Header/>
-
+            <div>
+                <div className="hidden md:block">
+                    <Header />
+                    <Hero />
+                    <Features />
+                    <Explore />
+                    <Trade />
+                    <Stream />
+                    <Footer />
+                </div>
+            </div>
             <div className="absolute top-0 right-0 left-0">
-                <Hero />
-                <Features />
-                <Explore />
-                <Trade />
-                <Stream />
-                <Footer />
+                <div className="block md:hidden">
+                    <LayoutMobile />
+                </div>
             </div>
         </div>
     );
