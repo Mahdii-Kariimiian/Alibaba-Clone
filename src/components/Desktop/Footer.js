@@ -5,8 +5,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 
-import GooglePlay from "../assets/google play download.png";
-import AppStore from "../assets/app store download.png";
+import GooglePlay from "../../assets/google play download.png";
+import AppStore from "../../assets/app store download.png";
 
 const Footer = () => {
     return (

@@ -1,6 +1,6 @@
-import TradeBackground from "../assets/Tradeـbackground.jpg";
-import Verified from "../assets/verified.png";
-import trade from "../assets/trade.png";
+import TradeBackground from "../../../../assets/Tradeـbackground.jpg";
+import Verified from "../../../../assets/verified.png";
+import trade from "../../../../assets/trade.png";
 import { FaPlayCircle } from "react-icons/fa";
 
 const Trade = () => {

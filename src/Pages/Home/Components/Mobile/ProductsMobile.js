@@ -1,7 +1,7 @@
 import React from "react";
 import Categories from "./Categories";
 import NewArrivals from "./NewArrivals";
-import FooterMobile from "./FooterMobile";
+import FooterMobile from "../../../../components/mobile/FooterMobile";
 
 import { ImWindows8 } from "react-icons/im";
 import { PiCaretCircleDoubleLeftFill } from "react-icons/pi";

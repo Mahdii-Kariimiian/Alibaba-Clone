@@ -3,7 +3,7 @@ import axios from "axios";
 
 const NewArrivals = () => {
     const [products, setProducts] = useState([]);
-    console.log(products);
+    
     useEffect(() => {
         const fetchData = async () => {
             try {

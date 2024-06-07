@@ -6,11 +6,11 @@ import { SiAfterpay } from "react-icons/si";
 import { FaEarthAsia } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
 //Images
-import Search from "../assets/searchـforـmatches.png";
-import Identify from "../assets/Identifyـtheـrightـone.png";
-import Manage from "../assets/Manageـwithـease.png";
-import Fulfill from "../assets/Fulfillـwithـtransparency.png";
-import Pay from "../assets/Payـwithـconfidence.png";
+import Search from "../../../../assets/searchـforـmatches.png";
+import Identify from "../../../../assets/Identifyـtheـrightـone.png";
+import Manage from "../../../../assets/Manageـwithـease.png";
+import Fulfill from "../../../../assets/Fulfillـwithـtransparency.png";
+import Pay from "../../../../assets/Payـwithـconfidence.png";
 
 const Stream = () => {
     //Banner
@@ -99,7 +99,7 @@ const Stream = () => {
                         );
                     })}
                 </div>
-                <div className="min-w-[600px]">
+                <div>
                     <img className="max-w-[700px]" src={banner}></img>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import HeaderMobile from "./HeaderMobile";
-import FooterMobile from "./FooterMobile";
+import HeaderMobile from "../../../../components/mobile/HeaderMobile";
+import FooterMobile from "../../../../components/mobile/FooterMobile";
 import ProductsMobile from "./ProductsMobile";
 
 const LayoutMobile = () => {

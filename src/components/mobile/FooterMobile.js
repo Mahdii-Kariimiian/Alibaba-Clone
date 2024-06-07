@@ -18,10 +18,17 @@ const FooterMobile = () => {
     return (
         <div className="flex gap-3 p-5 justify-between items-center text-gray-900 ">
             {icons.map((icon) => {
-                return <div key={icon.title} className="flex flex-col items-center">
-                  <p className="text-xl">{icon.icon}</p>
-                  <p className="text-[12px] whitespace-nowrap ">{icon.title}</p>
-                </div>;
+                return (
+                    <div
+                        key={icon.title}
+                        className="flex flex-col items-center"
+                    >
+                        <p className="text-xl">{icon.icon}</p>
+                        <p className="text-[12px] whitespace-nowrap ">
+                            {icon.title}
+                        </p>
+                    </div>
+                );
             })}
         </div>
     );
