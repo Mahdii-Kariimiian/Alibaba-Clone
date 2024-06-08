@@ -4,12 +4,10 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { FaCamera } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import Background from "../../../../assets/hero-background.jpg";
-
+import fetchData from "../../../../Config/axios";
 
 const Hero = () => {
     ////////STATES and VARIABLES//////////
-    //URL
-    const baseURL = "https://dummyjson.com/products";
     // Products from API
     const [products, setProducts] = useState([]);
     // Value of Input
@@ -24,15 +22,17 @@ const Hero = () => {
         "Red Nail Polish",
         "Chanel Coco Noir Eau De",
     ];
-    
 
     ////////USE EFFECTS//////////
     useEffect(() => {
         //Fetch API with searched term after 0.5 second from the last change of the value
         const timeoutId = setTimeout(() => {
             value &&
-                axios
-                    .get(`${baseURL}/search?q=${value}`)
+                fetchData(`/products/search?` , {
+                    params : {
+                        q : value
+                    }
+                })
                     .then((res) => {
                         const fetchedProducts = res.data.products;
                         setProducts(fetchedProducts);
