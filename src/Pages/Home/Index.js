@@ -6,7 +6,7 @@ import Stream from "./Components/Desktop/Stream";
 import Hero from "./Components/Desktop/Hero";
 import Trade from "./Components/Desktop/Trade";
 import UseWindowWidth from "../../components/UseWindowWidth";
-import LayoutMobile from "./Components/Mobile/LayoutMobile";
+import Layout from "./Components/Mobile/Layout";
 
 const Main = () => {
     // Custom hook for window width
@@ -18,7 +18,7 @@ const Main = () => {
                 {isMobile ? (
                     <div className="absolute top-0 right-0 left-0">
                         <div>
-                            <LayoutMobile />
+                            <Layout />
                         </div>
                     </div>
                 ) : (
