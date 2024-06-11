@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaCamera } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import Background from "../../../../assets/hero-background.jpg";
 import fetchData from "../../../../Config/axios";
+import UseClickOutside from "../../../../components/UseClickOutside";
 
 const Hero = () => {
     ////////STATES and VARIABLES//////////
@@ -24,14 +24,14 @@ const Hero = () => {
     ];
 
     ////////USE EFFECTS//////////
+    //Fetch API with searched term after 0.5 second from the last change of the value
     useEffect(() => {
-        //Fetch API with searched term after 0.5 second from the last change of the value
         const timeoutId = setTimeout(() => {
             value &&
-                fetchData(`/products/search?` , {
-                    params : {
-                        q : value
-                    }
+                fetchData(`/products/search?`, {
+                    params: {
+                        q: value,
+                    },
                 })
                     .then((res) => {
                         const fetchedProducts = res.data.products;
@@ -48,8 +48,8 @@ const Hero = () => {
         };
     }, [value]);
 
+    // Change the placeholder Term every 3 seconds
     useEffect(() => {
-        // Change the placeholder Term
         if (frequentlySearched.length > 0) {
             const placeHolderInterval = setInterval(() => {
                 setPlaceholderTerm(
@@ -65,24 +65,6 @@ const Hero = () => {
         }
     }, [frequentlySearched]);
 
-    useEffect(() => {
-        // Check if the click is outside the input and the dropdown
-        const handleClickOutside = (event) => {
-            if (
-                !event.target.closest(".input-container") &&
-                !event.target.closest(".dropdown-container")
-            ) {
-                setIsClicked(false);
-            }
-        };
-
-        window.addEventListener("click", handleClickOutside);
-
-        return () => {
-            window.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
-
     ////////FUNCTIONS//////////
     // Search button function
     const onSearch = (searchTerm) => {
@@ -93,10 +75,11 @@ const Hero = () => {
         e.stopPropagation();
         setIsClicked(true);
     };
-    //Handle Value change
-    const handleChange = (e) => {
-        setValue(e.target.value);
-    };
+    //CLICK outside Custom Hook
+    const clickRef = UseClickOutside(() => {
+        setIsClicked(false);
+        console.log("outside click");
+    });
 
     return (
         <div
@@ -112,11 +95,14 @@ const Hero = () => {
                 The leading B2B ecommerce platform for global trade
             </h1>
 
-            <div className="min-w-[400px] relative bg-white flex items-center gap-3 p-1 rounded-full max-w-[800px] input-container">
+            <div
+                ref={clickRef}
+                className="min-w-[400px] relative bg-white flex items-center gap-3 p-1 rounded-full max-w-[800px] input-container"
+            >
                 <input
                     onClick={handleClickInput}
                     value={value}
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => setValue(e.target.value)}
                     type="text"
                     className="focus:outline-none flex-1 ml-3 p-2 text-black"
                     placeholder={placeholderTerm}
@@ -148,7 +134,7 @@ const Hero = () => {
                 )}
 
                 {/* Filtered Terms */}
-                {isClicked && value && (
+                {isClicked && value && products.length > 0 && (
                     <div className="absolute top-12 p-3 right-0 left-0 text-black bg-white rounded-[25px] max-w-[800px] dropdown-container">
                         {products
                             .filter((product) =>

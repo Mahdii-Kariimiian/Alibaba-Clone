@@ -1,20 +1,28 @@
 import { useState } from "react";
 import Header from "../../../../components/mobile/Header";
 import Footer from "../../../../components/mobile/Footer";
-import Products from "./Products";
-import NewArrivals from "./NewArrivals";
 
-const LayoutMobile = () => {
-    const [show, setShow] = useState("Products");
+import { Outlet, NavLink } from "react-router-dom";
+
+const Layout = () => {
     return (
         <div>
             <Header />
-            <div className="flex gap-5 text-xl shadow-sm p-5">
-                <h2>Products</h2>
-                <h2>Manufacturers</h2>
+
+            <div className="border-b border-gray-100 flex gap-5 text-xl shadow-sm p-5 pb-0">
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive && "border-b border-black font-bold pb-5 text-xl"
+                    }
+                    to="/"
+                >
+                    Products
+                </NavLink>
+                <NavLink to="/manufacturers">Manufacturers</NavLink>
             </div>
-            <Products />
-            < NewArrivals />
+
+            <Outlet />
+
             <div className="fixed bottom-0 w-full bg-white">
                 <Footer />
             </div>
@@ -22,4 +30,4 @@ const LayoutMobile = () => {
     );
 };
 
-export default LayoutMobile;
+export default Layout;

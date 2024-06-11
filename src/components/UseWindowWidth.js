@@ -4,8 +4,11 @@ const UseWindowWidth = () => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        const rootDiv = document.getElementById("root");
+        rootDiv?.clientWidth > 768 ? setIsMobile(false) : setIsMobile(true);
+
         const handleResize = () => {
-            window.innerWidth > 768 ? setIsMobile(false) : setIsMobile(true);
+            rootDiv?.clientWidth > 768 ? setIsMobile(false) : setIsMobile(true);
         };
 
         window.addEventListener("resize", handleResize);
@@ -14,8 +17,6 @@ const UseWindowWidth = () => {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
-
-    console.log(isMobile)
 
     return isMobile;
 };

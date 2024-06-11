@@ -16,20 +16,26 @@ const NewArrivals = () => {
         fetchData();
     }, []);
     return (
-        <div className="p-5 flex overflow-auto gap-5">
-            {products.map((product) => {
-                return (
-                    <div className="min-w-[150px] space-y-1" key={product.id}>
-                        <img
-                            className="w-auto h-[150px]"
-                            src={product.images[0]}
-                            alt={product.title}
-                        ></img>
-                        <p> $ {product.price}</p>
-                        <p>MOQ : {product.stock} pieces</p>
-                    </div>
-                );
-            })}
+        <div className="p-5 overflow-auto">
+            <h2 className="text-[#1F2937] font-bold">New arrivals</h2>
+            <div className=" flex  gap-5">
+                {products.map((product) => {
+                    return (
+                        <div
+                            className="min-w-[150px] space-y-1"
+                            key={product.id}
+                        >
+                            <img
+                                className="w-auto h-[150px]"
+                                src={product.images[0]}
+                                alt={product.title}
+                            ></img>
+                            <p> $ {product.price}</p>
+                            <p>MOQ : {product.stock} pieces</p>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 };
