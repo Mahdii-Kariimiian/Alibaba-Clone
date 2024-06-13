@@ -7,7 +7,9 @@ const CategoryMaker = ({ productCategories }) => {
                         key={category.title}
                         className={`${category.color} p-3 rounded-md flex gap-1 items-center`}
                     >
-                        <h3 className="min-w-[80px] text-[12px] leading-4 font-bold">{category.title}</h3>
+                        <h3 className="min-w-[80px] text-[12px] leading-4 font-bold">
+                            {category.title}
+                        </h3>
                         <div className="text-2xl">{category.icon}</div>
                     </div>
                 );

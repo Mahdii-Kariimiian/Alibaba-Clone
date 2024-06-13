@@ -5,7 +5,7 @@ import Header from "../../components/Desktop/Header";
 import Stream from "./Components/Desktop/Stream";
 import Hero from "./Components/Desktop/Hero";
 import Trade from "./Components/Desktop/Trade";
-import UseWindowWidth from "../../components/UseWindowWidth";
+import UseWindowWidth from "../../hooks/UseWindowWidth";
 import MobileHero from "../../Pages/Home/Components/Mobile/MobileHero";
 
 const Main = () => {

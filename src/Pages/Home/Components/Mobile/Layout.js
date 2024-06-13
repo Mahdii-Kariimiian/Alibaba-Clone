@@ -18,7 +18,7 @@ const Layout = () => {
                 >
                     Products
                 </NavLink>
-                <NavLink to="/manufacturers">Manufacturers</NavLink>
+                <NavLink to="manufacturers">Manufacturers</NavLink>
             </div>
 
             <Outlet />

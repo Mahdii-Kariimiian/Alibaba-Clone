@@ -4,7 +4,7 @@ import { FaCamera } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import Background from "../../../../assets/hero-background.jpg";
 import fetchData from "../../../../Config/axios";
-import UseClickOutside from "../../../../components/UseClickOutside";
+import UseClickOutside from "../../../../hooks/UseClickOutside";
 
 const Hero = () => {
     ////////STATES and VARIABLES//////////
@@ -78,7 +78,6 @@ const Hero = () => {
     //CLICK outside Custom Hook
     const clickRef = UseClickOutside(() => {
         setIsClicked(false);
-        console.log("outside click");
     });
 
     return (
