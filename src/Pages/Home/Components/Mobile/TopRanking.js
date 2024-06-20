@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import fetchApi from "../../../../Config/axios";
 
-const TopRanking = () => {
+const TopRanking = ({ title }) => {
     const [topProducts, setTopProducts] = useState({});
 
-    console.log(topProducts);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -19,7 +18,7 @@ const TopRanking = () => {
 
     return (
         <div className="p-5 overflow-auto">
-            <h2 className="text-[#1F2937] font-bold">Top ranking</h2>
+            <h2 className="text-[#1F2937] text-xl font-bold">{title}</h2>
 
             {topProducts.length > 0 ? (
                 <div className=" flex  gap-5">
@@ -35,8 +34,14 @@ const TopRanking = () => {
                                     alt={product.title}
                                 ></img>
                                 <div className="text-center">
-                                    <p className="text-sm text-[#1F2937] font-bold">  Most popular </p>
-                                    <p className="line-clamp-2"> {product.description} </p>
+                                    <p className="text-sm text-[#1F2937] font-bold">
+                                        {" "}
+                                        Most popular{" "}
+                                    </p>
+                                    <p className="line-clamp-2">
+                                        {" "}
+                                        {product.description}{" "}
+                                    </p>
                                 </div>
                             </div>
                         );

@@ -34,7 +34,7 @@ const ProductsMobile = () => {
                 <CategoryMaker productCategories={productCategories} />
             </div>
             <NewArrivals />
-            <TopRanking />
+            <TopRanking title = "Top ranking"/>
         </div>
     );
 };

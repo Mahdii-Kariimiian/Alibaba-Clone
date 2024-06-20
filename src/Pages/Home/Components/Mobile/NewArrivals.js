@@ -17,7 +17,7 @@ const NewArrivals = () => {
     }, []);
     return (
         <div className="p-5 overflow-auto">
-            <h2 className="text-[#1F2937] font-bold">New arrivals</h2>
+            <h2 className="text-[#1F2937] text-xl font-bold">New arrivals</h2>
             <div className=" flex  gap-5">
                 {products.map((product) => {
                     return (

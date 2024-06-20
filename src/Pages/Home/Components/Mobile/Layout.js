@@ -12,13 +12,22 @@ const Layout = () => {
             <div className="border-b border-gray-100 flex gap-5 text-xl shadow-sm p-5 pb-0">
                 <NavLink
                     className={({ isActive }) =>
-                        isActive && "border-b border-black font-bold pb-5 text-xl"
+                        isActive &&
+                        "border-b border-black font-bold pb-5 text-xl"
                     }
                     to="/"
                 >
                     Products
                 </NavLink>
-                <NavLink to="manufacturers">Manufacturers</NavLink>
+                <NavLink
+                    to="manufacturers"
+                    className={({ isActive }) =>
+                        isActive &&
+                        "border-b border-black font-bold pb-5 text-xl"
+                    }
+                >
+                    Manufacturers
+                </NavLink>
             </div>
 
             <Outlet />
